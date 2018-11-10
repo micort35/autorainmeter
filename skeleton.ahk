@@ -43,7 +43,7 @@ return
 
 {
     if(IsRunning := 1){
-   	Run, "C:\Program Files\Rainmeter\Rainmeter.exe\" !LoadLayout "Blank"
+   	Run, "C:\Program Files\Rainmeter\Rainmeter.exe\" !LoadLayout "$Blank"
 	IsRunning := 0
 	return
 	}
