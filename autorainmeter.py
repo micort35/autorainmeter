@@ -61,7 +61,7 @@ def get_input():
             return
         try:
             duration = (int(duration[0]) * 3600000) + (int(duration[1]) * 60000) + (int(duration[-1]) * 1000)
-        except:
+        except ValueError:
             print('Input for duration restricted to whole numbers and colons!')
             return
         duration = str(duration)
