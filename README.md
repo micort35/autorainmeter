@@ -1,20 +1,20 @@
 # autorainmeter
 
-An autohotkey script to automatically cycle through Rainmeter layouts, with a python script to configure the AHK script.
+An autohotkey script to automatically cycle through Rainmeter layouts, with a Python script to configure the AHK script.
 
 ## Setup
 
-Foremost, ensure your current Python version is 3.x, and that you have Autohotkey downloaded (all versions should work). Download skeleton.ahk and autorainmeter.py into the same directory, and do not rename them, unless you plan to go into the python script and replace the file names there as well.
+Foremost, ensure your current Python version is 3.x, and that you have Autohotkey downloaded (all versions should work). Download skeleton.ahk and autorainmeter.py into the same directory, and do not rename them, unless you plan to go into the Python script and replace the file names there as well.
 
 Running the script without arguments will use its default operation, creating a window to enter the path to your Rainmeter layouts folder, the hotkeys you want to use for previewing and blanking, as well as the layout duration.
 
-Two files will then be created: vars.txt for variable storage, and LayoutChanger.ahk, the final product. You're free to move the AHK script, but vars.txt must stay with the Python script to run properly when using refresh or list.
+Two files will then be created: vars.txt for variable storage, and LayoutChanger.ahk, the final product. You're free to move the generated AHK script, but vars.txt must stay with the Python script to run properly when using refresh or list.
 
 The script can also be run with -r, or -l. -r will rewrite the AHK script using the current stored variables, useful if you've added new layouts but don't plan on changing the hotkeys or the layout duration. -l will list the stored variables in the terminal.
 
 All error messages are printed out to the terminal.
 
-Note: '$' is an escape character for layouts that you may not want to use for whatever reason. Any scripts such as '$Layout1' will not be entered into the list of layouts to cycle between.
+Note: '$' is an escape character for layouts that you may not want to use for whatever reason. Any scripts such as '$Layout1' will not be entered into the list of layouts to cycle between. The script also ignores the '@Backup' layout.
 
 ## Usage
 

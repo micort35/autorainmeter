@@ -38,7 +38,7 @@ def get_input():
         browser.destroy()
 
     def save():
-        #get variables and ensure there the strings aren't empty
+        #get variables, ensure values entered
         fp = path.get()
         hotkeys = hotkey.get()
         duration = timer.get()
@@ -66,7 +66,7 @@ def get_input():
             return
         duration = str(duration)
 
-        #write vars to storage and
+        #write vars to storage and close window
         file = open('vars.txt', 'w')
         file.write(fp + '\n' + prev + '\n' + blank + '\n' + duration)
         file.close
@@ -139,7 +139,7 @@ def write_AHK():
                             break
                         suite = suites.pop()
                     #check for invalid final suite
-                    if suite[0] is '$':
+                    if (suite[0] is '$') or (suite == '@Backup'):
                         break
                     cmd = 'G_THEME_ARRAY.insert("{}")\n'
                     cmd = cmd.format(suite)
