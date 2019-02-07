@@ -4,7 +4,7 @@ An autohotkey script to automatically cycle through Rainmeter layouts, with a Py
 
 ## Setup
 
-Foremost, ensure your current Python version is 3.x, and that you have Autohotkey downloaded (all versions should work). Download skeleton.ahk and autorainmeter.py into the same directory, and do not rename them, unless you plan to go into the Python script and replace the file names there as well.
+Foremost, ensure your current Python version is at least 3.6, and that you have Autohotkey downloaded (all versions should work). Download skeleton.ahk and autorainmeter.py into the same directory, and do not rename them, unless you plan to go into the Python script and replace the file names there as well.
 
 Running the script without arguments will use its default operation, creating a window to enter the path to your Rainmeter layouts folder, the hotkeys you want to use for previewing and blanking, as well as the layout duration.
 

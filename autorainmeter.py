@@ -26,10 +26,11 @@ def get_input():
     def browse():
         browser = tk.Tk()
         browser.withdraw()
-        initialdir = 'C:\\Users\\{}\\AppData\\Roaming\\Rainmeter'
         user = os.environ.get('USERNAME')
-        initialdir = initialdir.format(user)
+        #set browser to open to default layout storage location
+        initialdir = f'C:\\Users\\{user}\\AppData\\Roaming\\Rainmeter'
         dir = tk.filedialog.askdirectory(parent=browser, initialdir=initialdir, title='Please select a directory')
+        #if re-entering directory, clear previous entry
         if len(path.get()) > 0:
             path.delete(0, tk.END)
             path.insert(0, dir)
@@ -48,7 +49,7 @@ def get_input():
 
         #process hotkeys if valid input
         hotkeys = hotkeys.split(',')
-        if len(hotkeys) is not 2:
+        if len(hotkeys) != 2:
             print('Incorrect number of hotkeys!')
             return
         prev = hotkeys[0]
@@ -56,7 +57,7 @@ def get_input():
 
         #process duration if valid input
         duration = duration.split(':')
-        if len(duration) is not 3:
+        if len(duration) != 3:
             print('Please keep duration to hours, minutes, and seconds!')
             return
         try:
@@ -141,23 +142,19 @@ def write_AHK():
                     #check for invalid final suite
                     if (suite[0] is '$') or (suite == '@Backup'):
                         break
-                    cmd = 'G_THEME_ARRAY.insert("{}")\n'
-                    cmd = cmd.format(suite)
+                    cmd = f'G_THEME_ARRAY.insert("{suite}")\n'
                     ahk_file_w.write(cmd)
 
             elif point is '; Start the theme changer on a specified interval\n':
-                cmd = 'SetTimer, Timer_ChangeTheme, {}\n'
-                cmd = cmd.format(vars[3])
+                cmd = f'SetTimer, Timer_ChangeTheme, {vars[3]}'
                 ahk_file_w.write(cmd)
 
             elif point is '; Get Next Theme\n':
-                cmd = '{}::'
-                cmd = cmd.format(vars[1])
+                cmd = f'{vars[1]}::'
                 ahk_file_w.write(cmd)
 
             elif point is '; Clear Layout\n':
-                cmd = '{}::'
-                cmd = cmd.format(vars[2])
+                cmd = f'{vars[2]}::'
                 ahk_file_w.write(cmd)  
 
 def list_vars():

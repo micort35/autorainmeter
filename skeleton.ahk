@@ -24,6 +24,7 @@ Gosub, Timer_ChangeTheme
 
 ; Start the theme changer on a specified interval
 
+
 return ; AUTO EXEC ENDS ------------
  
 ; ------------ HOTKEYS -------------
