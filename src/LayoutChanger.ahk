@@ -3,11 +3,19 @@ SendMode Input                  ; Recommended for new scripts due to its superio
 SetWorkingDir %A_ScriptDir%     ; Ensures a consistent starting directory.
 #SingleInstance
 #Persistent
- 
+
 ; Theme Array
 G_THEME_ARRAY := []
  
-; Themes start
+; Read in themes
+IniRead, directory, ./config.ini, General, LayoutPath
+Loop, Files, %directory%\*.*, D
+{
+    firstChar := SubStr(%A_LoopFileName%, 1, 1)
+    if(firstChar != "$" || firstChar != "@") {
+        G_THEME_ARRAY.insert(%A_LoopFileName%)
+    }
+}
 
 ; Boolean Initialization
 IsRunning := true
@@ -23,14 +31,21 @@ nextTheme := GetNextTheme(prevTheme)
 Gosub, Timer_ChangeTheme
 
 ; Start the theme changer on a specified interval
+IniRead, duration, ./config.ini, General, TimerDuration
+SetTimer, Timer_ChangeTheme, %TimerDuration%
 
+; Read in hotkeys and map to corresponding functions
+IniRead, next, ./config.ini, Hotkeys, NextKey
+IniRead, blank, ./config.ini, Hotkeys, BlankKey
+Hotkey, %next%, Up_Next
+Hotkey, %blank%, Clear
 
 return ; AUTO EXEC ENDS ------------
  
 ; ------------ HOTKEYS -------------
- 
-; Get Next Theme
 
+; Get Next Theme
+Up_Next:
     nextThemeName := G_THEME_ARRAY[nextTheme]
     MsgBox, 5, Next Layout, Your next layout is %nextThemeName%.`nPress retry to randomize your layout again.
     ifMsgBox, Retry
@@ -41,18 +56,15 @@ return ; AUTO EXEC ENDS ------------
 return
 
 ; Clear Layout
-
-{
-    if(IsRunning := 1){
-   	Run, "C:\Program Files\Rainmeter\Rainmeter.exe\" !LoadLayout "$Blank"
-	IsRunning := 0
-	return
+Clear:
+    if(IsRunning := 1) {
+   	    Run, "C:\Program Files\Rainmeter\Rainmeter.exe\" !LoadLayout "$Blank"
+	    IsRunning := 0
+	    return
+	} else{
+	    Reload
+	    IsRunning := 1
 	}
-    else{
-	Reload
-	IsRunning := 1
-	}
-}
 
 ; ------------ TIMERS --------------
  
