@@ -1,6 +1,6 @@
 # autorainmeter
 
-An autohotkey script to automatically cycle through Rainmeter layouts, with a Python script to configure the AHK script.
+An AutoHotKey script to automatically cycle through Rainmeter layouts, with a Python script to configure the AHK script
 
 ## Setup
 
