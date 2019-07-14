@@ -22,7 +22,7 @@ Note: There can not be any spaces in the individual layout names for this script
 
 ## Alternative
 
-In the `legacy-input` branch the program uses a different method to configure the script, relying on a Python script to
+In the `legacy-config` branch the program uses a different method to configure the script, relying on a Python script to
 complete a skeleton of the AHK script here. if you have plenty of layouts with spaces, you may prefer to simply use
 the other branch rather than change all your names. It also does things like allow you to put in `TimerDuration` in
 a normal format, and use a file browser to input `LayoutPath`.
