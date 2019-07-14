@@ -10,12 +10,13 @@ An AutoHotKey script to automatically cycle through Rainmeter layouts, with a Py
 
 ### Build
 
-`python C:\Users\User\autorainmeter\src\autorainmeter.py {-r, -l}`
+Navigate to the autorainmeter folder. If this is your first build, or you don't have the `out` folder yet, execute `mkdir out`.
+Following that, execute `python src\autorainmeter.py` and you'll find the completed script in the `out` folder.
 
 The script supports two optional arguments:
-* `-r` will build the script from an existing config file
+* `-r` will build the script from an existing `config.txt` file
 * `-l` will list the current variables to the command line
-* No arguments will prompt for input, build the config file, and then the script.
+* No argument will prompt for input, build the config file, and then the script
 
 Note: `$` and `@` are escape characters: layouts beginning with either will not be added to the library to shuffle from.
 
